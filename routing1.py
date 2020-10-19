@@ -1,7 +1,25 @@
 from netmiko import ConnectHandler
 import time
+from ncclient import manager
 
 def routing():
+    config_cmds="""
+          <config>
+             <cli-config-data>
+                <cmd> router ospf 1 </cmd>
+                <cmd> network 0.0.0.0 255.255.255.255 area 0</cmd>
+
+    </cli-config-data>
+          </config>
+    """
+    confm = config_cmds
+
+    connect1=manager.connect(host="192.168.100.1",port=22,username="lab",password="lab123",hostkey_verify=False,device_params={'name':'iosxr'},allow_agent=False,look_for_keys=True)
+    #print("****Now configuring {}".format(hostname))
+
+    rpc_sent=connect1.edit_config(target="running",config=confm)
+    #print("{} configured!\n".format(hostname))
+    
     ios_r1={
     'device_type':'cisco_ios',
     'username':'lab',

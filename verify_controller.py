@@ -26,7 +26,7 @@ def verify_controller_con(ip):
     conn.write_channel("sudo mn\n")
     time.sleep(1)
     output = conn.read_channel()
-    print(output)
+    #print(output)
     if "word" in output:
         conn.write_channel("mininet\n")
         time.sleep(1)    
@@ -36,7 +36,7 @@ def verify_controller_con(ip):
     conn.write_channel("sh ovs-vsctl set bridge s1 protocols=OpenFlow13\n")
     time.sleep(2)
     print("\n")
-    print("******** OpenFlow version --> 1.3\n")
+    print("******** OpenFlow version changed to --> 1.3\n")
     
     #set controller ip address and port number
     conn.write_channel("sh ovs-vsctl set-controller s1 tcp:10.20.30.2:6653\n")

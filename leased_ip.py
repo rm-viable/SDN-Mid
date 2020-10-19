@@ -18,4 +18,4 @@ def leased_ip_check():
     return ip_leased
     
 check = leased_ip_check()
-print('The IP leased to Mininet VM is: ' + check)
+print('********* The IP leased to Mininet VM is: ' + check)
